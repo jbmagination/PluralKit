@@ -41,7 +41,9 @@ public class LoggerCleanService
 
     private static readonly Regex _VortexRegex =
         new("`\\[(\\d\\d:\\d\\d:\\d\\d)\\]` .* \\(ID:(\\d{17,19})\\).* <#\\d{17,19}>:");
-
+    
+    private static readonly Regex _robotopRegex = new("Message ID: (\\d{17,19})");
+    
     private static readonly Dictionary<ulong, LoggerBot> _bots = new[]
     {
         new LoggerBot("Carl-bot", 235148962103951360, fuzzyExtractFunc: ExtractCarlBot), // webhooks
@@ -64,6 +66,7 @@ public class LoggerCleanService
         new LoggerBot("Vortex", 240254129333731328, fuzzyExtractFunc: ExtractVortex),
         new LoggerBot("ProBot", 282859044593598464, fuzzyExtractFunc: ExtractProBot), // webhook
         new LoggerBot("ProBot Prime", 567703512763334685, fuzzyExtractFunc: ExtractProBot), // webhook (?)
+        new LoggerBot("RoboTop", 323630372531470346, ExtractRoboTop),
     }.ToDictionary(b => b.Id);
 
     private static Dictionary<ulong, LoggerBot> _botsByApplicationId
@@ -343,6 +346,15 @@ public class LoggerCleanService
         var embed = msg.Embeds?.FirstOrDefault();
         if (embed?.Title == null || embed.Title != "🗑 Message Deleted") return null;
         var match = _GiselleRegex.Match(embed?.Description);
+        return match.Success ? ulong.Parse(match.Groups[1].Value) : null;
+    }
+    
+    private static ulong? ExtractRoboTop(Message msg)
+    {
+        var stringWithId = msg.Embeds?.FirstOrDefault()?.Description ?? msg.Content;
+        if (stringWithId == null) return null;
+
+        var match = _robotopRegex.Match(stringWithId);
         return match.Success ? ulong.Parse(match.Groups[1].Value) : null;
     }
 
