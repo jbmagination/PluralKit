@@ -3992,9 +3992,9 @@ htmlparser2@^6.1.0:
     entities "^2.0.0"
 
 http-cache-semantics@^4.0.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/http-cache-semantics/-/http-cache-semantics-4.1.0.tgz#49e91c5cbf36c9b94bcfcd71c23d5249ec74e390"
-  integrity sha512-carPklcUh7ROWRK7Cv27RPtdhYhUsela/ue5/jKzjegVvXDqM2ILE9Q2BGn9JZJh1g87cp56su/FgQSzcWS8cQ==
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/http-cache-semantics/-/http-cache-semantics-4.1.1.tgz#abe02fcb2985460bf0323be664436ec3476a6d5a"
+  integrity sha512-er295DKPVsV82j5kw1Gjt+ADA/XYHsajl82cGNQG2eyoPkvgUhX+nDIyelzhIWbbsXP39EHcI6l5tYs2FYqYXQ==
 
 http-deceiver@^1.2.7:
   version "1.2.7"
@@ -7672,6 +7672,13 @@ vuepress-plugin-container@^2.0.2:
   dependencies:
     "@vuepress/shared-utils" "^1.2.0"
     markdown-it-container "^2.0.0"
+
+vuepress-plugin-dehydrate@1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/vuepress-plugin-dehydrate/-/vuepress-plugin-dehydrate-1.1.5.tgz#c29f08b85f337d3bc7c0ba09fe58cd9ed2f6e6c1"
+  integrity sha512-9F2x1vLCK4poPUMkLupD4HsgWdbZ68Escvma+DE1Dk6aAJdH5FGwmfOMxj4sMCBwz7S4s6bTMna+QQgD3+bzBA==
+  dependencies:
+    "@vuepress/shared-utils" "^1.2.0"
 
 vuepress-plugin-plausible-analytics@^0.2.1:
   version "0.2.1"
